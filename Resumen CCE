@@ -1,1 +1,49 @@
-Usos
+Usos para una MT:
+1) Aceptadoras de conjuntos en (Σ\{B})∗ 2)Calculadoras de funciones parciales computable 3)Enumeradoras de conjuntos en (Σ \ {B})∗
+Definimos los conjuntos computablemente enumerables de la sig forma: 
+Un conjunto A ⊆ N es computablemente enumerable, si hay una MT M tal que L(M ) = L
+Son equivalentes :
+1. A ⊆ N es c.e.
+2. A es vacío o existe función f : N → N parcial computable,A = dom(f ) = {x : f (x) ↓}.
+3. A es vacío o existe función g : N → N total computable, A = imagen(g).
+Def: un conjunto A ⊆ N es computable si existe una función total computable f : N → {0, 1} tal que para todo x, f (x) = 1 ⇔ x ∈ A.
+Ejemplos:
+{p : p es primo}
+{x : x es par}
+Notacion: A(complemento) = N \ A.
+Propiedades: 
+1. A es co-c.e si A(complemento) es c.e.
+2. Si A es computable, entonces A es c.e
+3. vale que A es computable si A y A(complemento) son c.e
+
+Halting problem como Conjunto c.e
+Definimos  Wn = {x : Φn(x) ↓} y K = {n : n ∈ Wn}, luego n ∈ Wn sii Φn(n)↓ sii HALT(n, n).
+Conclusion: K es c.e (pertenencia a un conjunto es computable con m.t) pero no computable ().
+
+Teorema: los c.e son cerrados por union e interseccion.
+Teorema de la enumeración: Wn = {x : Φn(x) ↓} = dominio del n-ésimo programa, luego hay una enumeracion de los c.e
+Teorema: Si f : N → N es parcial computable, A = {f (x) : f (x) ↓} es c.e.
+Teorema: todo conjunto infinito c.e. contiene un conjunto infinito computable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
