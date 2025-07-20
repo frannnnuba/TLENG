@@ -24,15 +24,19 @@ Teorema: los c.e son cerrados por union e interseccion.
 Teorema de la enumeración: Wn = {x : Φn(x) ↓} = dominio del n-ésimo programa, luego hay una enumeracion de los c.e
 Teorema: Si f : N → N es parcial computable, A = {f (x) : f (x) ↓} es c.e.
 Teorema: todo conjunto infinito c.e. contiene un conjunto infinito computable.
-
-
-
-
-
-
-
-
-
+Funciones de Kolmogorov:
+C : N → N, C(x) = min w (Ψ(0)w = x)
+Por lo tanto C(x) es el menor código de programa que computa x. C es total y no computable
+Elegante = imagen(C) es el conjunto de códigos más chicos que computan valores distintos, tampoco es c.e.
+Tot = {x : Φx es total} no es c.e.
+Tot(complemento) = {x : Φx no es total} no es c.e.
+Teorema de Rice: A ⊆ N es un conjunto de índices si existe una clase de funciones N → N p.c C tal que A = {x : Φx ∈ C}
+teo: Si A es un conjunto de índices tal que ∅  != A != Naturales , A no es computable.
+No son computables: 
+{x : Φx es total}
+{x : Φx es creciente}
+{x : Φx tiene dominio infinito}
+{x : Φx es primitiva recursiva}
 
 
 
