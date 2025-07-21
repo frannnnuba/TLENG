@@ -68,3 +68,52 @@ a contar ya no es un AP y la MT no puede contar todo de una pasada).
 6. Sea M un AFD y sea M^R el automata que resulta de revertir funcion de transicion. L(M) interseccion L(M^R) es regular. Verdadero
 El automata resultante de revertir la funcion de transicion sera finito(posiblemente no det.) pues simplemente estamos 'cambiando el sentido de las flechas' luego la interseccion de lenguajes 
 regulares es regular
+
+Ejercicio 7. Indicar Verdadero o Falso y justificar:
+1. Toda funcion total de N en N es computable.Falso
+F(x)= { x+1 sii Halt(x,x) =1; 0 caso contrario}
+2. El conjunto de funciones parcialmente computables de N en N es c.e.Verdadero
+Por teorema, sabemos que A={f(x) : f(x)↓} es c.e, luego esto es extensible a todas las funciones p.c
+
+Ejercicio 8. Indicar V o F y justificar. Es decidible que
+1. La interseccion de dos conjuntos c.e. es un conjunto c.e.Verdadero
+Los c.e estan cerrados por union e interseccion.
+2. La clausura de Kleene de un lenguaje c.e. es c.e. Verdadero
+Fijamos una codificacion para un alfabeto (numerable),
+3. La clausura de Kleene de lenguaje computable es computable.Verdadero
+partimos de que L es computable, luego L*= U(t>=0)L^t (utoria desde L = 0 hasta inf) luego podemos reescribir cada L^t como
+L^t = {w ∈ Σ *: w= U_1.U_2....U_i tq U_j ∈ L, 1 <= j <= i, |w| = t} o lo que es equivalente L^t= L.L^t-1, lo que se puede demostrar inductivamente tambien
+es computable pues L es computable.
+4. La clausura de Kleene de un lenguaje regular es regular.Verdadero
+La clausura de Kleene de un leng regular L es la utoria infinita de cadenas w ∈ L, lo cual puede descomponerse en uniones finitas de cadenas U1...Un ∈ L,
+luego la union finita de lenguajes regulares es regular. Basta con dar un AF que reconozca L y hacer transiciones lambda desde los estados finales al inicial.
+5. La clausura de Kleene de un lenguaje libre de contexto es libre de contexto.Verdadero
+Los lenguajes libres de contexto son cerrados por union, luego la clausura de Kleene de un leng lib. de ctxto L* sera la union infinita de cadenas ∈ L,
+por tanto basta con que esas descomposiciones sean aceptadas por L.
+6. La reversa de un lenguaje computable es computable.Verdadero
+Para esto usaremos dos maquinas de Turing: la primera que consume w ∈ L normalmente (pues L es computable), y una segunda que a medida que la primer MT 
+consume cadena va escribiendo en su cinta la cadena reversa, luego corre en la primer MT y si esta rechaza entonces w^r es rechazada, caso contrario es aceptada.
+7. La reversa de un lenguaje c.e es c.e. Verdadero
+Para que un lenguaje sea c.e tiene que haber una funcion total computable f: N -> Σ*, luego L ⊆ Σ*, para encontrar la reversa del lenguaje nos basta
+con definir una g: N -> Σ* tal que g(x)= {w : w = reversa(f(x))} y dado que la reversa es una funcion computable g(n) resulta computable y su imagen es L^r.
+
+Ejercicio 9. Indicar V o F y justificar. Es decidible que:
+1. Si Halt : N × N → N fuera computable entonces la complejidad de Kolmogorov C : N → N,
+C(s) = min{#(P) : Ψ_P(0) = s} seria computable. Verdadero
+Si Halt fuera computable, podriamos encontrar el min. P tal que  Ψ_P(0)↓ (termina) y ademas da como resultado s, pero decidir esto no es computable como ya sabemos.
+2. La pertenecia de una palabra a un lenguaje computable es computable. Verdadero
+Si el lenguaje es computable entonces habra una MT que podra reconocer o rechazar la palabra.
+3. Todo conjunto infinito c.e. tiene un subconjunto infinito computable. Falso
+Si tomamos el conjunto Wn = {x : Φn(x) ↓} es un conj. c.e pero no es computable, por lo tanto asumir que uno de sus subconjuntos es computable seria falso pues esto nos permitiria
+resolver el Halting problem
+
+Ejercicio 10. Sea APD P = (Q, Σ, δ, Γ, q0, F ) y AP S = (Q′, Σ′, δ′, Γ, q′0, F ′).
+Indicar V o F y justificar.
+1. L(P ) union L(S) es libre de contexto Verdadero
+Los lenguajes libres de contexto estan cerrados por union
+2. L(P ) interseccion L(S) es libre de contexto.Falso
+Los CFL no estan cerrados por union, ej L1 = {aibjcj } y L2 = {aibicj} , L1 ∩ L2 = {aibici} no es libre de contexto
+3. Para todo AP hay un APD que reconoce el mismo lenguaje. Falso
+L = {ww^r} es aceptado por un APND pero no es aceptado por ningun APD 
+4. Es decidible si dos AFs reconocen el mismo lenguaje o no.Verdadero
+Minimizando estados deberiamos poder chequear si dos AFS son equivalentes, o en su defecto llevarlos a E.R y construir los automatas derivando las E.R 
