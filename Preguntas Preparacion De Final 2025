@@ -35,7 +35,15 @@ Demostracion: supongamos que L es infinito, pero no tiene palabras de long [N,2n
 |xy|<=n  por lo tanto 0 < |y| <= N, luego por bombeo con i= 0  2N <=  |α'| < 2N - N (en el caso |Y| = N) esto es |α'|-|y| osea 2N <=  |α'| < N lo cual es un absurdo, y para cada tamaño de Y
 en el intervalo [1,N] cubre el intervalo  [N,2n).
 
+Ejercicio 4.¿Cuantos automatas finitos deterministas con dos estados pueden construirse sobre el alfabeto {0, 1}?
+Para calcular esto necesitamos tener en cuenta(generico):
+1. La cantidad de estados inicales distintos que podemos tener (viene dado por el diccionario)
+2. La cantidad de δ que podemos dar para el alfabeto cumpliendo con ser deterministas.
+3. La cantidad de estados finales.
+ desarrollando un poco: 
+1. es |Q| una vez que tenemos armado un automata podemos hacer que todos sus estados sean iniciales uno por uno(no simultaneamente)
+2. cantidad de funciones a lo algebra 1 (f: A-> B #f = B^A) en el caso de δ: QxΣ -> Q esto es: |Q|^(|Q|x|Σ|)
+3. esto es basicamente un partes de Q (este estado es final? si o no) 2^Q
+Total: |Q|x |Q|^(|Q|x|Σ|)x2^Q
 
-
-
-
+Sean L1 y L2 lenguajes regulares incluidos en Σ∗. Hacer un AFD con dos cintas de entrada que reconoce el lenguaje L = {(u, v) : u ∈ L1, v ∈ L2, |u| = |v|}
