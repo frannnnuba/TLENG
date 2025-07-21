@@ -46,4 +46,7 @@ Para calcular esto necesitamos tener en cuenta(generico):
 3. esto es basicamente un partes de Q (este estado es final? si o no) 2^Q
 Total: |Q|x |Q|^(|Q|x|Σ|)x2^Q
 
-Sean L1 y L2 lenguajes regulares incluidos en Σ∗. Hacer un AFD con dos cintas de entrada que reconoce el lenguaje L = {(u, v) : u ∈ L1, v ∈ L2, |u| = |v|}
+Ejercicio 5.Sean L1 y L2 lenguajes regulares incluidos en Σ∗. Hacer un AFD con dos cintas de entrada que reconoce el lenguaje L = {(u, v) : u ∈ L1, v ∈ L2, |u| = |v|}
+Sea M1= {Q1,Σ,δ1,q01,F1} el AFD que reconoce L1 y sea M2= {Q2,Σ,δ2,q02,F2} el AFD que reconoce a L2, queremos construir un AFD A tal que L(A) = L, luego notamos que lo que necesitamos es que los pares
+(u,v) sean reconocidos por sus respectivos automatas, para ello definiremos A= {Q,Σ,δ,(q01,q02),F1xF2} donde Q = Q1XQ2,y definiremos:
+δ1: Q1xΣ -> Q1, δ2: Q2xΣ -> Q2, δ: (Q1xQ2)x(ΣxΣ) -> Q. δ= {(p,q) ∈ Q1xQ2, (a,b) ∈ ΣxΣ : δ((p,q),(ab))= (δ1(p,a),δ2(q,b)) ∈ Q} =  δ(^)={δ((q01,q02),(a,b)) ∈ F1xF2}
