@@ -117,3 +117,7 @@ Los CFL no estan cerrados por union, ej L1 = {aibjcj } y L2 = {aibicj} , L1 ∩ 
 L = {ww^r} es aceptado por un APND pero no es aceptado por ningun APD 
 4. Es decidible si dos AFs reconocen el mismo lenguaje o no.Verdadero
 Minimizando estados deberiamos poder chequear si dos AFS son equivalentes, o en su defecto llevarlos a E.R y construir los automatas derivando las E.R 
+
+Ejercicio 11. Dar un algoritmo que codeterminice un automata finito.
+Un automata finito es codeterministico si su funcion de transicion δ: QxΣ -> Partes(Q) satisface que para todo par de estados p,q y todo a ∈ Σ no hay r tal que r ∈ δ(p,a) y
+y r ∈ δ(q,a) y F consiste de un unico estado final.
