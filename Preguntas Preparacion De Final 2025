@@ -50,3 +50,21 @@ Ejercicio 5.Sean L1 y L2 lenguajes regulares incluidos en Σ∗. Hacer un AFD co
 Sea M1= {Q1,Σ,δ1,q01,F1} el AFD que reconoce L1 y sea M2= {Q2,Σ,δ2,q02,F2} el AFD que reconoce a L2, queremos construir un AFD A tal que L(A) = L, luego notamos que lo que necesitamos es que los pares
 (u,v) sean reconocidos por sus respectivos automatas, para ello definiremos A= {Q,Σ,δ,(q01,q02),F1xF2} donde Q = Q1XQ2,y definiremos:
 δ1: Q1xΣ -> Q1, δ2: Q2xΣ -> Q2, δ: (Q1xQ2)x(ΣxΣ) -> Q. δ= {(p,q) ∈ Q1xQ2, (a,b) ∈ ΣxΣ : δ((p,q),(ab))= (δ1(p,a),δ2(q,b)) ∈ Q} =  δ(^)={δ((q01,q02),(a,b)) ∈ F1xF2}
+
+Ejercicio 6. Decir Verdadero o Falso y justificar:
+1. Para cada AF hay infinitos AFD que reconocen el mismo lenguaje.Verdadero
+Justificacion: dos automatas con estados A,B,C y Q0,Q1,Q2 con iguales transiciones estados finales, estado inicial etc son iguales. Ademas si el AFD original tiene un estado trampa explicito, siempre
+podemos hacerlo que transicione a un nuevo estado trampa_n ad infinitum.
+2. Si L es libre de contexto, todo subconjunto de L es libre de contexto. Falso.
+Sea L={a^nb^nc^m|n,m >= 0} es un lenguaje libre de contexto (lee igual cantidades de a y b y luego solo consume c) pero el subconjunto {a^nb^nc^n|n >= 0} no es libre de contexto
+3. Los automatas finitos determinısticos reconocen una cadena de longitud n en exactamente n transiciones. Verdadero
+Un automata finito va a transicionar los N simbolos de su cadena y por mas que pase por un e.f. en el camino solo lo aceptara si esta en un estado final, si lo pensamos como un grafo (y sabiendo AFD)
+esto es solo tiene un camino a recorrer.
+4. Los automatas de pila determinısticos reconocen una cadena de longitud n en exactamente n transiciones.Falso
+Basta con apilar un lenguaje regular {a^n| n>0} y hacer que cuando termina de consumir a,Z0/Z0 simplemente pase por lambda,Z0/Z0 al estado final, luego esto termina en mas de n pasos y el AP es determ. 
+5. Las maquinas de Turing determinısticas reconocen una cadena de longitud n en exactamente n transiciones.Falso
+Una MTD si bien tiene bien definidas sus transiciones, puede estar chequeando cosas que necesiten mas de una pasada en la cinta lo cual lleva mas de N transiciones (algun lenguaje que tenga mas de 2 cosas
+a contar ya no es un AP y la MT no puede contar todo de una pasada).
+6. Sea M un AFD y sea M^R el automata que resulta de revertir funcion de transicion. L(M) interseccion L(M^R) es regular. Verdadero
+El automata resultante de revertir la funcion de transicion sera finito(posiblemente no det.) pues simplemente estamos 'cambiando el sentido de las flechas' luego la interseccion de lenguajes 
+regulares es regular
