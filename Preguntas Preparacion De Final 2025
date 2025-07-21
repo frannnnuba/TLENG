@@ -16,11 +16,17 @@ A= A1xA2= {Q1xQ2,Σ,δ,(q01,q02),F1xF2} tal que L(A) = L(A1)n L(A2) donde δ: (Q
 δ((p,q),a)-> (δ1(p,a),δ2(q,a)) para todo a en Σ y para todo (p,q) en Q1xQ2.
 L(A)= {w ∈ Σ*: δ((q01,q02),w) ∈ F1xF2} =  (δ^)={δ((q01,q02),w) ∈ F1xF2}.
 
-
-
-
-
-
+Ejercicio 2. Dar dos algoritmos distintos para determinar si el lenguaje aceptado por un automata finito dado es el conjunto de todas las cadenas del alfabeto. Justificar cada uno.
+Para dar el algoritmo notamos que lo que se nos pide es ver que L(a) = Σ*, luego tenemos dos formas de proceder:
+Alg 1: como el automata dado es finito, construimos su complemento y recorremos sistematicamente el automata para ver si reconoce alguna palabra, si lo hace entonces es claro que es falso.
+Alg 2: usaremos el lema de Pumping para intentar encontrar una palabra que, deberia estar entre n y 2n -1 pero no esta, luego con esto nos alcanzara para demostrar que el automata no reconoce lo pedido.
+Sea α = xyz una descomposicion de una palabra perteneciente al lenguaje, |α| >= N, entonces xy^iz debe pertenecer al lenguaje para todo i >= 0.
+Usaremos una prop. intermedia para la demo: L ⊆ Σ* es finito <--> para todo w ∈ Σ*, |w| >= N, W ∉ L, con N la cte de Pumping.
+Ahora, sabemos que no hace falta buscar para todos los N + k k >=0 mayores si no en el intervalo [N,2n).
+=>) si L es finito, entonces queremos ver que no hay ningun w ∈ L tq |w| >= N, pues si lo hay entonces el conjunto sera infinito, esto es un absurdo por lo tanto solo tendremos palabras entre [o,N)
+<=) como para todo w ∈ Σ*, |w| >= N, W ∉ L entonces L solo tendra palabras de tamaño menor a N o L es vacio, esto es un conjunto finito.
+Habiendo demostrado la prop, podemos asegurar que si no encontramos ninguna palabra en el intervalo [N,2n) nos bastara para afirmar que el conj. es finito y nunca podra ser todas las cadenas del 
+alfabeto. Si ademas faltase alguna combinacion en el intervalo [0,n) es claro que tampoco sera todas las cadenas del alfabeto pues faltaran palabras, esto se puede ver con un AF.
 
 
 
