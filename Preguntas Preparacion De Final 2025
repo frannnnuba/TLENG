@@ -1,11 +1,20 @@
-Ejercicio 1. Dar un algoritmo que decida si dos expresiones regulares denotan el mismo lenguaje. Justificar
-la correctitud.
-
-
-
-
-
-
+Ejercicio 1. Dar un algoritmo que decida si dos expresiones regulares denotan el mismo lenguaje. Justificar la correctitud.
+Primero derivamos las E.R y obtenemos sus respectivos automatas (los asumimos Deterministicos pero si no lo fuesen los determinizamos como ya sabemos)
+Llamamos A1={Q1,Σ,δ1,Q01,F1} al AFD que reconoce a ER1 y A2={Q2,Σ,δ1,Q02,F2} al AFD que reconoce a ER2
+¿L1(A1)= L2(A2)? Para ver esto tenemos que ver la doble inclusion de los lenguajes.
+L1 ⊆ L2 <--> L1 n (Σ* \ L2) = ∅ y L2 ⊆ L1 <--> L2 n (Σ* \ L1) = ∅ 
+Luego, podemos construir los automatas que reconocen la interseccion pues los lenguajes reg. estan cerrados por interseccion (Σ* \ L es regular),
+ahora para probar que la interseccion es vacia hay dos formas:
+1. Lema de Pumping para lenguajes regulares: supongamos que L es reg, luego podemos probar que si no hay ninguna palabra entre n y 2n-1 no habra palabras 
+mas grandes que ellas (pues serian necesariamente su concatenacion), queda probar que es vacio para las palabras menore a la const. de Pumping; dado que la
+const de Pumping viene dada por la minima cantidad de estados del automata, podemos construir un AFD y ver que esta no acepte nada como veremos a continuacion .
+2. ver que no lleguen a ningun estado final. Con probarlo con todas las permutaciones de simbolos para cadenas de tamaño menores a la ctte de Pumping ya 
+sabremos entonces que el lenguaje es vacio; esto se debe hacer de algun modo sistematico de modo que no se dejen combinaciones fuera (BFS,DFS).
+Luego, es claro que si alguna de las dos inclusiones no se cumple las E.R no eran equivalentes. Reconstruimos ahora el automata que sera la interseccion de
+estos dos automatas, y por tanto el que acepte el lenguaje esperado.
+A= A1xA2= {Q1xQ2,Σ,δ,(q01,q02),F1xF2} tal que L(A) = L(A1)n L(A2) donde δ: (Q1XQ2)XΣ -->(Q1xQ2), 
+δ((p,q),a)-> (δ1(p,a),δ2(q,a)) para todo a en Σ y para todo (p,q) en Q1xQ2.
+L(A)= {w ∈ Σ*: δ((q01,q02),w) ∈ F1xF2} =  (δ^)={δ((q01,q02),w) ∈ F1xF2}.
 
 
 
