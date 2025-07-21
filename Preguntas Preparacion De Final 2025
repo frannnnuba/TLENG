@@ -28,32 +28,12 @@ Ahora, sabemos que no hace falta buscar para todos los N + k k >=0 mayores si no
 Habiendo demostrado la prop, podemos asegurar que si no encontramos ninguna palabra en el intervalo [N,2n) nos bastara para afirmar que el conj. es finito y nunca podra ser todas las cadenas del 
 alfabeto. Si ademas faltase alguna combinacion en el intervalo [0,n) es claro que tampoco sera todas las cadenas del alfabeto pues faltaran palabras, esto se puede ver con un AF.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Ejercicio 3. Dar un algoritmo que determine si un lenguaje regular dado es infinito. Justificar.
+Para ver que un lenguaje regular dado va a ser infinito nos alcanza con buscar en el intervalo de palabras de long. [N,2n), pues sabemos que con lema de Pumping todo lo bombeado sera infinito.
+Sea  α = xyz una descomposicion de una palabra perteneciente al lenguaje, |α| >= N, entonces xy^iz debe pertenecer al lenguaje para todo i >= 0.
+Demostracion: supongamos que L es infinito, pero no tiene palabras de long [N,2n), luego sea  α' = xy^iz la descomposicion para la palambra mas chica de L,sabemos |α'|>= 2N, sabemos que |y| >= 1 y
+|xy|<=n  por lo tanto 0 < |y| <= N, luego por bombeo con i= 0  2N <=  |α'| < 2N - N (en el caso |Y| = N) esto es |α'|-|y| osea 2N <=  |α'| < N lo cual es un absurdo, y para cada tamaño de Y
+en el intervalo [1,N] cubre el intervalo  [N,2n).
 
 
 
