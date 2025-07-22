@@ -121,3 +121,54 @@ Minimizando estados deberiamos poder chequear si dos AFS son equivalentes, o en 
 Ejercicio 11. Dar un algoritmo que codeterminice un automata finito.
 Un automata finito es codeterministico si su funcion de transicion δ: QxΣ -> Partes(Q) satisface que para todo par de estados p,q y todo a ∈ Σ no hay r tal que r ∈ δ(p,a) y
 y r ∈ δ(q,a) y F consiste de un unico estado final.
+El algoritmo consistiria de tomar el automata finito(determinizarlo si no lo esta ya) y luego hacer un bfs desde el estado inicial (podemos tener una tabla por si se llega a un
+estado q1 con la misma transicion pero distinto tiempo de descubrimiento) y marcamos aquellos estados que son visitados por mas de un estados con la misma transicion.
+Para estos creamos los estados q1' necesarios de modo que no tengamos dos estados que transicionaban al mismo estado original por el mismo simbolo, luego vamos a tener que recrear
+el camino que hacia q1 con sus respectivas transiciones (paralelizamos estos caminos para no crear mas estados con llegadas de mismo simbolo y distinto estado).
+ESTA MAL/INCOMPLETO: si tengo un unico Qf alcanzable desde dos estados que transicionan por el mismo simbolo, entonces los separo en dos e.f --> no cunmplo con condicion de unico
+estado final. Si en cambio hago que estos dos estados finales apunten a un unico estado final con transiciones lambda cumplo con estado final unico pero no es deterministico.
+IDEA 2: invertir el automata original, hacemos que el nuevo estado inicial sea el final (si el automata original tenia varios los hacemos transicionar por lambda a un unico)
+y el final sera el que tenia el estado inicial, luego determinizamos el automata inverso y volvemos a invertirlo y poner el estado inicial donde estaba el original y el final
+donde estaba el inicial del inverso.
+Correctitud: al invertir las transiciones del automata estamos viendo quienes llegaban a el estado, aprovechando el alg. de detminizacion (que solo aplica de salida) evitamos
+transiciones por el mismo simbolo haia un mismo estado, luego al hacer esto desde el estado final original aseguramos que no se llegara a el si no se cumplen estas condiciones,
+y preservamos el estado original al hacerlo el final(y aseguramos que se acepta el mismo leng.), luego al invertir el automata nuevamente tendremos el automata codeterminizado.
+
+Ejercicio 12. Dado un automata finito determnistico A = (QA, Σ, δA, q0, FA) y dado automata de pila deterministico P = (QP , Σ, Γ, δP , p0, FP ) dar un algoritmo que decida si
+el lenguaje L(A) ∩ L(P ) es finito.Justificar la correctitud.
+Empezamos recordando que la interseccion de un lenguaje regular (L(A)) con un libre de contexto(L(P)) da como resultado un lenguaje P' libre de contexto, luego para decidir si el
+lenguaje es finito nos basta con que no se pueda bombear ninguna palabra del lenguaje de modo que este en el rango de long [n,2n).
+Recordamos Pumping para CFL: α en L con |α| ≥ n la ctte de Pumping, α = rxyzs.|xyz| ≤ n y |xz| ≥ 1 Para todo i ≥ 0, la cadena rx^iyz^is pertenece a L. 
+Luego es claro ver que si i>1 y sabiendo 1 <= |xz| < N debera estar en el rango antes mencionado, por lo tanto no sera finito, si en cambio las cadenas son lo suficientemente 
+chicas como para no caer en el rango al ser bombeadas, entonces sera finito. Notar que basta con que una cadena al ser bombeada caiga en el rango de long [n,2n) para que no sea finito.
+Luego la otra opcion es construir el automata de pila que reconoce la interseccion, y chequear si reconoce alguna cadena de longitud [N,2N).
+
+jercicio 13. Un automata de pila no deterministico, (Q, Σ, Γ, δ, q0, Z0, F ) es un contador si Γ = {Z0, I}el sımbolo Z0 representa el valor del cero y e I representa el valor
+1. En cada transicion el automata solamentepuede consultar si el contador es 0 o no. El contador no puede volverse negativo, por lo que no puede restarel valor 1 de un contador
+que actualmente es 0.
+Demostrar Verdadero o Falso
+a. Si un lenguaje es reconocible por un automata contador entonces el lenguaje complemento tambien.Falso
+Si el automata contador reconoce a L={x: x >0} entonces L^c ={x: x <0} y sabemos que el automata contador no puede contar negativos
+b. Si dos lenguaje LA y LB reconocibles por automatas contadores entonces el lenguaje de su union LA ∪ LB tambien.Verdadero
+MAs alla del contador, es la union de dos lenguajes libres de contexto osea que pueden ser reconocidos por un A.P, luego su union tambien pues CFL estan cerrados por union.
+c. Si dos lenguaje LA y LB reconocibles por un automatas contadores entonces el lenguaje de su interseccion LA ∩ LB tambien. Falso
+La interseccion de CFL no esta cerrada, por lo tanto puede dar algo no libre de contexto y no se puede dar un AP que lo reconozca.
+d. Todos los lenguajes reconocibles por automatas finitos son reconocibles por automatas contadores.Verdadero 
+Simplemente ignora la pila pues al ser regular no necesita contar
+e. No todos los lenguajes reconocibles por un automata contador son reconocibles por un automata finito.Verdadero
+Al usar la pila tiene mas potencia que un AF, luego puede contar cosas que un AF no puede, por ej {a^nb^n|n>0}.
+Ayuda: Considerar como se demuestran y como se refutan las propiedades de clausura de los lenguajes libres de contexto.
+
+Ejercicio 14. Un aut´omata de cola es un aut´omata no determin´ıstico, similar a uno de pila pero tiene una
+cola en vez de una pila. Formalmente, un aut´omata de cola es M = (Q, Σ, Γ, δ, q0, F ) donde
+Q es el conjunto de estados
+Σ es el alfabeto de la cinta entrada
+Γ el el alfabeto de cola,
+δ : Q × Σ ∪ {λ} × Γ ∪ {λ} → P(Q × Γ ∪ λ) es la funci´on de transici´on
+q0 ∈ Q es el estado inicial.
+F ⊆ Q es el conjunto de estados finales.
+Por ejemplo δ(q1, a, b) = {(q2, c), (q3, d)} dice que el estado q1 si lee a de la entrada y b est´a primero en la
+cola, entonces b sale de la cola, el aut´omata pasa al estado q2, y pone c ´ultimo en la cola. Se sabe (y no es
+dif´ıcil de demostrar) que los aut´omatas de cola reconocen todos los lenguajes libres de contexto.
+Demostrar que los aut´omatas de cola reconocen m´as lenguajes que loa reconocibles por aut´omatas de pila.
+Ayuda: dar un lenguaje que no es libre de contexto
