@@ -1,0 +1,44 @@
+1) sea w en Σ* w= a1...an , definimos  rotacion(w)= an.a1.a2....an-1 y sea L incluido en Σ definimos rotacion(L)= {rotacion(w): w en L}
+
+a)si L es regular, entonces rotacion(L) es regular
+
+b) si L es CFL entonces rotacion(L) es CFL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
