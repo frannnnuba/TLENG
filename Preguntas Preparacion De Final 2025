@@ -188,5 +188,12 @@ Dar otro otro indice d tal que tal que Φ_d(n) (x1, . . . , xn) = g(d, x1, . . .
 
 Ejercicio 17. Demostrar
 A-el conjunto de todas las funciones totales computabes N → N, Tot, no es c.e.
-Supongamos que Tot es c.e, luego hay una funcion f: N -> N tal que f es total computable, esto es hay una numeracion para los valores
+Supongamos que Tot = {x: Φ_x es total} es c.e, spongamos que hay una funcion f: N -> N tal que f es total computable, esto es podemos nuumerar Tot con los valores de f,
+Tot={f(0),f(1)...}. Luego, existe e tal que Φe(x) = f(x) + 1 y como f(x) es total comp. tambien lo es Φe, esto es e ∈ Tot es un indice.
+Luego existe un u tal que f(u)= e pues dijimos que f era una enumeracion de Tot, osea Φ_e(x) = Φ_f(u) (x) = Φ_f(x)(x) + 1  lo cual es un absurdo para x = u.
 B-el conjunto de todas las funciones N → N que no son totales computables, Tot(complemento), no es c.e.
+Supongamos que Tot(complemento) es c.e luego hay una funcion f: N -> N tal que f enumera Tot(comple), esto es Tot(comple)= f(0),f(1),..}. 
+Luego sea P_e,x(y)={0 si φe(x) ↓ y ↑, en caso contrario} y sea I_e,x el codigo del programa P_e,x entonces hay dos casos:
+Si I_e,x existe en la imagen de f, entonces  P_e,x no es una no funcion total y se indefine siempre y φe(x)↑.
+Si I_e,x no existe en la imagen de f, entonces P_e,x es una funcion total que se define siempre(ctte 0) y φe(x) ↓.
+Entonces Halt(comple)= {<e,x> :φ_e(x)↑} seria c.e. lo cual sabemos es un absurdo
