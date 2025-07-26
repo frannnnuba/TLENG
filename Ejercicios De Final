@@ -5,10 +5,20 @@ a)si L es regular, entonces rotacion(L) es regular
 b) si L es CFL entonces rotacion(L) es CFL
 
 
-
-
-
-
+2) Demostrar que los conjuntos libres de contexto deterministicos incluyen propiamente al conjunto de los lenguajes regulares.
+Empezamos recordando que una inclusion propia de conjuntos implica que hay al menos un elemento(puede haber mas) que pertenecera al conjunto de DCFL y que no pertenecera a el 
+conjunto de lenguajes regulares, ademas el conjunto de DCFL contendra todos los elementos de los lenguajes regulares.
+Queremos demostrar ahora que: 
+a- Todo lenguaje regular esta incluido en los DCFL.
+Para demostrar esto basta con que recordemos que un lenguaje regular esta dado por un AF de algun tipo (deterministico, no deterministico, con transiciones lambda) luego la
+caracteristica de los lenguajes regulares es que no necesitan de una estructura auxiliar para 'contar', por lo tanto, basta con que los DCFL reconocidos por automatas de pila 
+actuen como un automata finito ignorando la pila. Luego es claro que los DCFL contienen a los lenguajes regulares.
+b- Hay por lo menos un lenguaje de los DCFL que no esta incluido en los lenguajes regulares.
+Para probar esto basta con recordar que los DCFL tienen mayor poder de computacion que los AF, luego el lenguaje {a^nb^n|n>=0} es libre de contexto y reconocido por un APD
+pero es claro que un AF no puede reconocer este lenguaje pues no tiene manera de contar los Aes de modo de ver que haya igual cantidad de Bes(facilmente demostrable con 
+pumping para lenguajes regulares).Asi es claro que hay por lo menos unlenguaje reconocido por los DCFL y no por los lenguajes regulares.
+Conclusion: dado que los lenguajes egulares estan incluidos en los DCFL y hay lenguajes DCF que no son reconocidos por los lenguajes regulares, concluimos que los lenguajes 
+regulares estan contenidos propiamente en los lenguajes DCF.
 
 
 
